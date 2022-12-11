@@ -51,9 +51,17 @@ public class MyConsumer {
                 }
                 //write in console 1 and data will appear on the screen
                 else if (Objects.equals(command, "1")){
-                    for (Map.Entry<String, Double> entry: commandPercentage.entrySet()) {
+                    List<Map.Entry<String, Double>> commandList = new ArrayList<>(commandPercentage.entrySet());
+                    final Comparator<Map.Entry<String, Double>> COMPARE_BY_COUNT = (lhs, rhs) -> {
+                        if (Objects.equals(lhs.getValue(), rhs.getValue())) return 0;
+                        else if (lhs.getValue() > rhs.getValue()) return 1;
+                        else return -1;
+                    };
+                    commandList.sort(COMPARE_BY_COUNT);
+                    for (Map.Entry<String, Double> entry: commandList) {
                         System.out.println(entry.getKey() + " " +  entry.getValue().toString());
                     }
+
                     System.out.println();
                     for (Map.Entry<String, Double> entry: avg.entrySet()) {
                         System.out.println(entry.getKey() + " " +  entry.getValue().toString());

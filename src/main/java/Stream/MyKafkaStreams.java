@@ -32,7 +32,7 @@ public class MyKafkaStreams {
                         },
                         Materialized.<String, JsonCountAndSumCommands.CountAndSumCommands>as(cmStore)
                                 .withKeySerde(Serdes.String())
-                                .withValueSerde(new JsonCountAndSumCommands.JSONSerde<JsonCountAndSumCommands.CountAndSumCommands>())
+                                .withValueSerde(new JsonCountAndSumCommands.JSONSerde<>())
                                 .withLoggingDisabled()
                 );
 
