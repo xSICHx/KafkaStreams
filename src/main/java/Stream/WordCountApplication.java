@@ -10,7 +10,7 @@ import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 import java.util.regex.Pattern;
 
-public class Aagdsfgdfsg {
+public class WordCountApplication {
     public static void main(String[] args) {
         Properties props = new Properties();
         /* У каждого приложения Kafka должен быть свой идентификатор приложения.
@@ -30,6 +30,7 @@ public class Aagdsfgdfsg {
 
         //Создаем объект класса StreamsBuilder и приступаем к описанию потока, передавая название входной темы.
         final StreamsBuilder builder = new StreamsBuilder();
+
         KStream<String, String> source =
                 builder.stream("wordcount-input");
         final Pattern pattern = Pattern.compile("\\W+");
